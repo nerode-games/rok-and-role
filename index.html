@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111715" />
+    <meta name="description" content="Vuelve al mundo de Rok. La aventura isométrica original de J2ME, ahora en tu navegador." />
+    <link rel="icon" href="./assets/icon.png" />
+    <title>Rok & Role — La aventura completa</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="masthead">
+        <a class="wordmark" href="./" aria-label="Rok and Role, inicio"><span class="rune" aria-hidden="true">ᛟ</span><span>Rok <i>&</i> Role<small>UNA AVENTURA DE NERODE BURNING GAMES</small></span></a>
+        <div class="header-actions"><span class="edition">LA AVENTURA COMPLETA</span><button id="story" class="quiet-button">Historia</button><button id="help" class="quiet-button">Cómo jugar <span aria-hidden="true">↗</span></button></div>
+      </header>
+
+      <main>
+        <section class="chapter-heading" aria-labelledby="chapter-title">
+          <div><p id="chapter-eyebrow" class="eyebrow">CAPÍTULO 01 / 9</p><h1 id="chapter-title">The Entry<span>.</span></h1></div>
+          <p id="chapter-description" class="chapter-description">Más allá de los muros de la fortaleza,<br />tu viaje acaba de empezar.</p>
+        </section>
+
+        <div class="game-layout">
+          <section class="game-panel" aria-label="Mazmorra">
+            <div class="panel-toolbar"><span><span class="status-light"></span><span id="turn-status">Preparando la aventura</span></span><button id="pause" class="quiet-button" disabled>Pausa <kbd>Esc</kbd></button></div>
+            <div class="viewport">
+              <div id="game" role="img" aria-label="Vista isométrica de la sala. Usa los controles para mover a Halloran."></div>
+              <div class="viewport-corner top-left"></div><div class="viewport-corner bottom-right"></div>
+              <div id="start-screen" class="start-screen">
+                <div class="start-content"><p class="eyebrow">EL MUNDO DE ROK TE ESPERA</p><img src="./assets/splash.jpg" alt="Rok and Role, portada original" width="230" height="240" /><p>Una fortaleza sitiada. Un pasadizo olvidado.<br />Un artesano convertido en héroe.</p><button id="start" class="primary-button" disabled>Cargando…</button><button id="continue" class="quiet-button" hidden>Continuar aventura</button><small>NUEVE CAPÍTULOS · GRÁFICOS Y MAPAS ORIGINALES</small></div>
+              </div>
+            </div>
+            <div class="room-strip"><span id="room-label">SALA 01 <span>/ 10</span></span><span id="facing-label">Halloran · mirando al suroeste</span><span id="turn-label">TURNO 000</span></div>
+            <div class="control-deck">
+              <div class="movement-controls"><button data-action="left" aria-label="Girar a la izquierda">↶<small>GIRAR</small></button><div class="forward-back"><button data-action="forward" aria-label="Avanzar">↑</button><button data-action="backward" aria-label="Retroceder">↓</button></div><button data-action="right" aria-label="Girar a la derecha">↷<small>GIRAR</small></button></div>
+              <button data-action="attack" class="action-button"><span aria-hidden="true">⚔</span> Acción <kbd>Espacio</kbd></button>
+              <button id="inventory" class="inventory-button">Inventario <kbd>I</kbd></button>
+              <button data-action="wait" class="wait-button" aria-label="Esperar un turno">Esperar <kbd>.</kbd></button>
+            </div>
+            <p class="control-hint">↑ ↓ avanzar y retroceder <span>·</span> ← → girar <span>·</span> Espacio atacar o buscar</p>
+          </section>
+
+          <aside class="adventure-panel" aria-label="Estado de la aventura">
+            <section class="hero-card"><div class="card-label">TU PERSONAJE <span>01</span></div><div class="hero-identity"><div class="portrait" aria-hidden="true"><span></span></div><div><h2>Halloran</h2><p>Artesano de la fortaleza</p><span id="hero-level" class="level-badge">NIVEL 0</span></div></div><div class="stat-label"><span>Vitalidad</span><strong id="hp-value">10 <span>/ 10</span></strong></div><div id="hp-meter" class="meter" role="meter" aria-label="Vitalidad" aria-valuemin="0" aria-valuemax="10" aria-valuenow="10"><span id="hp-fill"></span></div><div class="xp-row"><span>EXPERIENCIA</span><span id="xp-value">0 / 100 PX</span></div><div class="xp-track"><span id="xp-fill"></span></div><p id="active-effect" class="active-effect" hidden></p><div class="equipment"><div><span>ARMA</span><strong id="weapon-name">DAGGER</strong><small id="weapon-stat">1–3 de daño</small></div><div><span>ARMADURA</span><strong id="armor-name">SHIRT</strong><small id="armor-stat">0 de defensa</small></div></div></section>
+            <section class="quest-card"><p class="card-label">TU MISIÓN <span aria-hidden="true">◇</span></p><h2 id="quest-title">Encuentra la salida</h2><p id="quest-description">Explora las mazmorras y abre camino hacia el siguiente capítulo.</p><div class="quest-note"><span aria-hidden="true">✧</span><span id="quest-hint">Busca la llave en el cofre de la segunda sala.</span></div><div class="exploration"><span>SALAS DESCUBIERTAS</span><strong id="explored-count">1 / 10</strong></div><div id="explored-rooms" class="explored-rooms" aria-label="Progreso de exploración"></div></section>
+            <section class="journal-card"><p class="card-label">DIARIO DE VIAJE <span aria-hidden="true">≡</span></p><ol id="journal" aria-label="Últimos acontecimientos"></ol><p id="announcement" class="sr-only" role="status" aria-live="polite"></p></section>
+          </aside>
+        </div>
+      </main>
+      <footer><span>PROGRAMACIÓN: ANTONIO CALERO <span class="footer-divider">/</span> GRÁFICOS: JESÚS LÓPEZ</span><span id="save-status">GUARDADO LOCAL · SIN CUENTA</span></footer>
+      <p id="error-banner" class="error-banner" role="alert" hidden></p>
+    </div>
+    <dialog id="game-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><p id="dialog-eyebrow" class="eyebrow">ROK & ROLE</p><button id="close-dialog" class="quiet-button" aria-label="Cerrar ventana">✕</button></div><h2 id="dialog-title"></h2><div id="dialog-body"></div><div id="dialog-actions"></div></dialog>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
